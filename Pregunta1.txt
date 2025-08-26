@@ -1,0 +1,41 @@
+// Clase base Vehículo
+class Vehiculo {
+  String marca;
+  String modelo;
+  int anio;
+
+  // Constructor
+  Vehiculo(this.marca, this.modelo, this.anio);
+
+  // Método para mostrar información
+  void mostrarInfo() {
+    print('Marca: $marca');
+    print('Modelo: $modelo');
+    print('Año: $anio');
+  }
+}
+
+// Subclase Auto que hereda de Vehiculo
+class Auto extends Vehiculo {
+  String tipoCombustible;
+
+  // Constructor de Auto, llama al constructor base con super()
+  Auto(String marca, String modelo, int anio, this.tipoCombustible)
+      : super(marca, modelo, anio);
+
+  // Sobrescribir mostrarInfo para añadir tipo de combustible
+  @override
+  void mostrarInfo() {
+    super.mostrarInfo(); // Llama al método de Vehiculo
+    print('Tipo de Combustible: $tipoCombustible');
+  }
+}
+
+void main() {
+  // Crear un objeto Auto y mostrar su información
+  Auto miAuto = Auto('Toyota', 'Corolla', 2020, 'Gasolina');
+  miAuto.mostrarInfo();
+}
+
+
+
