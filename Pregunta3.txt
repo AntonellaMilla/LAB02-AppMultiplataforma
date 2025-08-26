@@ -1,0 +1,49 @@
+// Clase abstracta Empleado
+abstract class Empleado {
+  String nombre;
+  double salario;
+
+  Empleado(this.nombre, this.salario);
+
+  // Método abstracto para calcular bonificación
+  double calcularBonificacion();
+
+  void mostrarInfo() {
+    print('Nombre: $nombre');
+    print('Salario: \$${salario.toStringAsFixed(2)}');
+    print('Bonificación: \$${calcularBonificacion().toStringAsFixed(2)}');
+  }
+}
+
+// Subclase Gerente
+class Gerente extends Empleado {
+  Gerente(String nombre, double salario) : super(nombre, salario);
+
+  @override
+  double calcularBonificacion() {
+    // Ejemplo: bonificación del 20% del salario
+    return salario * 0.20;
+  }
+}
+
+// Subclase Operario
+class Operario extends Empleado {
+  Operario(String nombre, double salario) : super(nombre, salario);
+
+  @override
+  double calcularBonificacion() {
+    // Ejemplo: bonificación del 10% del salario
+    return salario * 0.10;
+  }
+}
+
+void main() {
+  Gerente gerente1 = Gerente('Ana', 5000);
+  Operario operario1 = Operario('Luis', 3000);
+
+  print('--- Gerente ---');
+  gerente1.mostrarInfo();
+
+  print('\n--- Operario ---');
+  operario1.mostrarInfo();
+}
