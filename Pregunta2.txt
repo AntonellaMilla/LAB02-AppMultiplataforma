@@ -1,0 +1,40 @@
+// Definición de Vehiculo (base)
+class Vehiculo {
+  String marca;
+  String modelo;
+  int anio;
+
+  // Constructor explícito con parámetros
+  Vehiculo(this.marca, this.modelo, this.anio);
+
+  void mostrarInfo() {
+    print('Marca: $marca');
+    print('Modelo: $modelo');
+    print('Año: $anio');
+  }
+}
+
+// Clase Auto que hereda de Vehiculo
+class Auto extends Vehiculo {
+  String tipoCombustible;
+
+  // Constructor principal
+  Auto(String marca, String modelo, int anio, this.tipoCombustible)
+      : super(marca, modelo, anio);
+
+  // Constructor con nombre para auto eléctrico
+  Auto.electrico(String marca, String modelo, int anio)
+      : tipoCombustible = 'Eléctrico',
+        super(marca, modelo, anio);
+
+  @override
+  void mostrarInfo() {
+    super.mostrarInfo();
+    print('Tipo de Combustible: $tipoCombustible');
+  }
+}
+
+void main() {
+  Auto miAutoElectrico = Auto.electrico('Tesla', 'Model 3', 2024);
+  miAutoElectrico.mostrarInfo();
+}
